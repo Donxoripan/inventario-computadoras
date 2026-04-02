@@ -3,7 +3,7 @@ Primeros pasos del proyecto:
 * Ejecutar en la consola el comando "Python -m venv venv" (Sirve para la creacion del entorno virtual en la carpeta raiz de lo que se ejecutara,
 lo más recomendable en este proyecto es crear un entorno virtual en cada uno "Inventario_Agente" y "Inventario_AgenteWeb".)
 
-* Activar el entorno virtual que en el caso de vscode con la consola de powershell es cosa de dirigirse a la ruta "../. venv\Scripts\activate.bat" 
+* Activar el entorno virtual que en el caso de vscode con la consola de powershell es cosa de dirigirse a la ruta "../.venv\Scripts\activate.bat" 
 (Teniendo en cuenta que esta dentro de las ruta de cada aplicacion hablada anteriormente, repetir el proceso por cada una.)
 
 * En este punto la consola deberia salir algo como "(.venv) ../rutacorrespondiente:". En este punto solo queda estar en la misma ruta que el archivo
