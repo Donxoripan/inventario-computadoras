@@ -1,0 +1,5 @@
+pyinstaller --onefile ^
+--manifest admin.manifest ^
+--add-binary "../vcruntime140_1.dll;." ^
+--add-binary "../herramientas/smartctl.exe;." ^
+inventario.py
