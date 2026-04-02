@@ -1,7 +1,7 @@
 Abrir Entorno Virtual:
 
 * Dentro de la carpeta inventario ruta: "C:\laragon\www\inventario".
-* Escribir: ".\venv\Scripts\activate.bat".
+* Escribir: ". venv\Scripts\activate.bat".
 
 Ejecutar Script:
 

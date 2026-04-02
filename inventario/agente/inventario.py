@@ -61,7 +61,7 @@ data = {
     "codigo_inventario": None
 }
 
-url = "https://1a4c-190-121-9-194.ngrok-free.app/inventario/api/guardar_equipo.php"
+url = "https://bf0f-190-121-9-194.ngrok-free.app/inventario/api/guardar_equipo.php"
 
 try:
     respuesta = requests.post(url, json=data, timeout=60)
