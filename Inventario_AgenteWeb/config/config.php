@@ -1,7 +1,5 @@
 <?php
 
-define('SMARTCTL_PATH', realpath(__DIR__ . '/../herramientas/smartctl.exe'));
-
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "");

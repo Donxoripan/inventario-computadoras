@@ -1,3 +1,3 @@
 <?php
-header("Location: inventario/panel/login.php");
+header("Location: Inventario_AgenteWeb/panel/login.php");
 exit;

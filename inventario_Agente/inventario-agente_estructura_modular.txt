@@ -1,0 +1,42 @@
+inventario-agente
+│ 
+├─ agente
+│  │
+│  ├─ funciones
+│  │  ├─ __pycache__
+│  │  │
+│  │  ├─ discos 
+│  │  │  ├─ clasificacion.py
+│  │  │  ├─ disco.py
+│  │  │  ├─ main.py
+│  │  │  ├─ salud.py
+│  │  │  ├─ smart.py
+│  │  │  └─ wmi_discos.py 
+│  │  │
+│  │  ├─ __init__.py
+│  │  ├─ cpu.py
+│  │  ├─ grupo_trabajo.py
+│  │  ├─ anydesk.py
+│  │  ├─ ip.py
+│  │  ├─ permisos.py
+│  │  ├─ ram.py
+│  │  ├─ serial.py
+│  │  ├─ sistema_operativo.py
+│  │  └─ uuid.py
+│  │
+│  ├─ inventario.py
+│  └─ admin.manifest
+│ 
+├─ api 
+│  ├─ guardar_codigo.php
+│  └─ guardar_equipo.php 
+│ 
+├─ config 
+│  ├─ conexion.php 
+│  └─ config.php 
+│ 
+├─ herramientas
+│  └─ smartctl.exe 
+│ 
+├─ vcruntime140_1.dll
+└─ venv 

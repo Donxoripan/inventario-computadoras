@@ -14,6 +14,7 @@ from funciones.uuid import obtener_uuid
 from funciones.serial import obtener_serial
 from funciones.discos.disco  import obtener_disco_principal
 from funciones.discos.main import obtener_discos_smart
+from funciones.discos.utils import obtener_ruta_smart
 
 admin()
 
@@ -44,6 +45,9 @@ serial = obtener_serial()
 discos_fisicos = obtener_discos_smart()
 
 print("Discos detectados:", discos_fisicos)
+
+ruta = obtener_ruta_smart()
+print("Ruta SMART:", ruta)
 
 data = {
     "nombre_pc": nombre_pc,
