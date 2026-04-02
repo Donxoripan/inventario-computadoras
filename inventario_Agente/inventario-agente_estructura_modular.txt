@@ -1,4 +1,4 @@
-inventario-agente
+Inventario-Agente
 │ 
 ├─ agente
 │  │
@@ -26,6 +26,8 @@ inventario-agente
 │  │
 │  ├─ inventario.py
 │  └─ admin.manifest
+│  └─ smartctl.exe 
+│  └─ vcruntime140_1.dll
 │ 
 ├─ api 
 │  ├─ guardar_codigo.php
@@ -35,8 +37,5 @@ inventario-agente
 │  ├─ conexion.php 
 │  └─ config.php 
 │ 
-├─ herramientas
-│  └─ smartctl.exe 
-│ 
-├─ vcruntime140_1.dll
-└─ venv 
+├─ Inventario_AgenteWeb_Modular.txt
+└─ requirements.txt
