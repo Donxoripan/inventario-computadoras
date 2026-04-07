@@ -14,8 +14,8 @@ if (isset($_SESSION["usuario"])) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" href="/inventario/panel/images/favicon.ico">
-    <link rel="stylesheet" href="/inventario/panel/css/login.css">
+    <link rel="icon" href="/Inventario_AgenteWeb/panel/images/favicon.ico">
+    <link rel="stylesheet" href="/Inventario_AgenteWeb/panel/css/login.css">
 
     <meta charset="UTF-8">
     <title>Login</title>
@@ -35,7 +35,7 @@ if (isset($_SESSION["usuario"])) {
     </form>
 </div>
 
-<script src="/inventario/panel/js/login.js"></script>
+<script src="/Inventario_AgenteWeb/panel/js/login.js"></script>
 
 </body>
 </html>

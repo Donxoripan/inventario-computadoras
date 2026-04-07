@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS equipos (
   discos TEXT,
   ultimo_inventario DATETIME DEFAULT NULL,
   codigo_inventario VARCHAR(20) DEFAULT NULL,
+  perifericos TEXT,
 
   PRIMARY KEY (id),
   UNIQUE KEY unique_uuid (uuid),

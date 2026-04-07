@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnAgregar = document.getElementById("btnAgregarPerifericos");
     const btnQuitar = document.getElementById("btnQuitarPerifericos");
 
-    // AGREGAR
     btnAgregar.addEventListener("click", function () {
 
         contenedor.style.display = "block";
@@ -12,18 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const bloque = document.createElement("div");
         bloque.classList.add("bloque-perifericos");
 
-        // 🔥 número automático (sin contador)
         const numero = contenedor.children.length + 1;
 
         bloque.innerHTML = `
-
             <div style="font-weight: bold; margin-bottom: 10px;">
                 Periférico ${numero}
             </div>
 
             <div class="mb-2 d-flex align-items-center">
-                <label style="min-width: 180px; margin-bottom: 0;">Tipo periférico:</label>
-                <select class="form-control form-control-sm">
+                <label style="min-width: 180px;">Tipo periférico:</label>
+                <select class="form-control form-control-sm tipo">
                     <option value="">Seleccione..</option>
                     <option value="Multifuncional">Multifuncional</option>
                     <option value="Impresora">Impresora</option>
@@ -33,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <div class="mb-2 d-flex align-items-center">
-                <label style="min-width: 180px; margin-bottom: 0;">Marca:</label>
-                <select class="form-control form-control-sm">
+                <label style="min-width: 180px;">Marca:</label>
+                <select class="form-control form-control-sm marca">
                     <option value="">Seleccione..</option>
                     <option value="HP">HP</option>
                     <option value="Epson">Epson</option>
@@ -46,18 +43,28 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <div class="mb-2 d-flex align-items-center">
-                <label style="min-width: 180px; margin-bottom: 0;">Modelo:</label>
-                <input type="text" class="form-control form-control-sm">
+                <label style="min-width: 180px;">Modelo:</label>
+                <input type="text" class="form-control form-control-sm modelo">
             </div>
 
             <div class="mb-2 d-flex align-items-center">
-                <label style="min-width: 180px; margin-bottom: 0;">Tóner:</label>
-                <input type="text" class="form-control form-control-sm">
+                <label style="min-width: 180px;">Tóner:</label>
+                <input type="text" class="form-control form-control-sm toner">
             </div>
 
             <div class="mb-2 d-flex align-items-center">
-                <label style="min-width: 180px; margin-bottom: 0;">IP:</label>
-                <input type="text" class="form-control form-control-sm">
+                <label style="min-width: 180px;">IP:</label>
+                <input type="text" class="form-control form-control-sm ip">
+            </div>
+
+            <div class="mb-2 d-flex align-items-center">
+                <label style="min-width: 180px;">C.I:</label>
+                <input type="text" class="form-control form-control-sm ci">
+            </div>
+
+            <div class="mb-2 d-flex align-items-center">
+                <label style="min-width: 180px;">S/N:</label>
+                <input type="text" class="form-control form-control-sm sn">
             </div>
 
             <hr>
@@ -66,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedor.appendChild(bloque);
     });
 
-    // QUITAR
     btnQuitar.addEventListener("click", function () {
 
         const bloques = contenedor.querySelectorAll(".bloque-perifericos");

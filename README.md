@@ -29,6 +29,8 @@ en otros equipos y no tener tanta informacion, solo enviarla.
 
 * En caso de querer crear un ejecutable siempre tener en la misma carpeta "Smartctl.exe" para asi evitar algun error.
 
+* Recordar que al crear el ejecutable es recomendable ejecutar los comando dentro mismo entorno virtual para asi evitar errores.
+
 ----------------------------------------------- DATOS PENSADOS PARA EJECUTARSE A FUTURO -------------------------------------------------------------------
 
 * Se desea en una proxima actualizacion hacer que funcione en segundo plano cosa que cada 6 horas o el plazo de tiempo que el admin guste haga una consulta el agente a

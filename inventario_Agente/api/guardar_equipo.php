@@ -184,7 +184,7 @@ if (!empty($id)) {
         $ip
     ];
 
-    $types = "sssssssss";
+    $types = "ssssssssss";
 
     if (!empty($uuid)) {
         $sql_update .= ", uuid=?";
@@ -300,12 +300,12 @@ else {
     $sql_insert = "INSERT INTO equipos
     (codigo_inventario, nombre_pc, usuario, departamento, sistema_operativo, anydesk, cpu, ram, disco_total, discos, ip, uuid, serial, ultimo_inventario)
     VALUES
-    (?,?,?,?,?,?,?,?,?,?,?,?, ?, NOW())";
+    (?,?,?,?,?,?,?,?,?,?,?,?,?, NOW())";
 
     $stmt = $conn->prepare($sql_insert);
 
     $stmt->bind_param(
-        "ssssssssssss",
+        "sssssssssssss",
         $codigo,
         $nombre_pc,
         $usuario,

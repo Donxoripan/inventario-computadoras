@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["usuario"])) {
-    header("Location: /inventario/panel/login.php");
+    header("Location: /Inventario_AgenteWeb/panel/login.php");
     exit;
 }
 ?>
@@ -13,6 +13,8 @@ require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/../agente/database/disco.php';
 require_once __DIR__ . '/../agente/logica/disco.php';
 require_once __DIR__ . '/../agente/vistas/disco.php';
+require_once __DIR__ . '/../agente/logica/perifericos.php';
+require_once __DIR__ . '/../agente/vistas/perifericos.php';
 require_once __DIR__ . '/../agente/logica/cpu.php';
 
 use Dompdf\Dompdf;
@@ -35,11 +37,17 @@ if (!$row) {
 }
 
 // ==============================
+// 🔥 OBTENER PERIFÉRICOS
+// ==============================
+$perifericosProcesados = procesarPerifericos($row["perifericos"] ?? "");
+$tablaPerifericos = renderizarPerifericos($perifericosProcesados);
+
+// ==============================
 // OBTENER Y PROCESAR DISCOS
 // ==============================
-$textoDiscos = obtenerDiscosPorEquipo($id);   // database/disco.php
-$discos = procesarDiscos($textoDiscos);       // logica/disco.php
-$tablaDiscos = renderizarDiscos($discos);     // vistas/disco.php
+$textoDiscos = obtenerDiscosPorEquipo($id);
+$discos = procesarDiscos($textoDiscos);
+$tablaDiscos = renderizarDiscos($discos);
 
 // ==============================
 // TABLA PRINCIPAL
@@ -129,6 +137,20 @@ table{
 .tabla-discos tr{
     page-break-inside: avoid;
 }
+
+/* 🔥 NUEVO: estilos perifericos */
+.tabla-perifericos{
+    margin-top:10px;
+}
+.tabla-perifericos th{
+    background:#eaeaea;
+    border:1px solid #444;
+    padding:6px;
+}
+.tabla-perifericos td{
+    border:1px solid #444;
+    padding:6px;
+}
 </style>
 ';
 
@@ -139,7 +161,9 @@ $html = $estilos;
 $html .= '<h1>Ficha Técnica del Equipo</h1>';
 $html .= '<h3>Información General</h3>';
 $html .= $tabla;
-$html .= $tablaDiscos;
+
+$html .= $tablaDiscos;        // discos
+$html .= $tablaPerifericos;   // 👈 PERIFÉRICOS AQUÍ
 
 // ==============================
 // GENERAR PDF
