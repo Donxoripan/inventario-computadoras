@@ -5,8 +5,7 @@ function renderizarPerifericos($perifericos)
         return "<p>Sin información de periféricos</p>";
     }
 
-    ob_start(); // 🔥 captura HTML
-
+    ob_start(); //
     ?>
 
     <h3>Periféricos</h3>
@@ -38,7 +37,7 @@ function renderizarPerifericos($perifericos)
                 <td><?= htmlspecialchars($p["ci"] ?? "N/A") ?></td>
                 <td><?= htmlspecialchars($p["sn"] ?? "N/A") ?></td>
 
-                <!-- 🔥 BOTÓN CLAVE -->
+                
                 <td>
                     <button 
                         class="btn btn-warning btn-editar"
@@ -56,5 +55,5 @@ function renderizarPerifericos($perifericos)
 
     <?php
 
-    return ob_get_clean(); // 🔥 devuelve HTML como string
+    return ob_get_clean(); // 
 }

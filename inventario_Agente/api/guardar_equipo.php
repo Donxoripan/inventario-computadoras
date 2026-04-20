@@ -18,7 +18,7 @@ function esNombreHardwareValido($valor) {
 }
 
 function esTextoValido($valor) {
-    return preg_match('/^[\p{L}\p{N}\s\-\_\.]+$/u', $valor);
+    return preg_match('/^[\p{L}\p{N}\s\-\_\.\(\)\/\@\:\,]+$/u', $valor);
 }
 function error($msg, $code = "GENERAL") {
     echo json_encode([
@@ -51,6 +51,10 @@ $disco = $data["disco_total"] ?? "";
 $ip = $data["ip"] ?? "";
 $uuid = trim($data["uuid"] ?? "");
 $serial = $data["serial"] ?? "";
+$ubicacion = $data["ubicacion"] ?? "";
+$departamento_manual = $data["departamento_manual"] ?? "";
+//$datos_sticker = $data["datos_sticker"] ??"";
+$observaciones = $data["observaciones"] ??"";
 $codigo = $data["codigo_inventario"] ?? null;
 
 // =============================
@@ -63,7 +67,10 @@ $camposTexto = [
     "departamento" => $departamento,
     "sistema_operativo" => $sistema,
     "anydesk" => $anydesk,
-    "cpu" => $cpu,
+    "ubicacion" => $ubicacion,
+    "departamento_manual" => $departamento_manual,
+    //"datos_sticker" => $datos_sticker,
+    "observaciones" => $observaciones,
     "codigo_inventario" => $codigo
 ];
 
@@ -76,6 +83,10 @@ foreach ($camposTexto as $campo => $valor) {
     if (!empty($valor) && !esTextoValido($valor)) {
         error("Dato inválido en $campo");
     }
+}
+
+if (!empty($cpu) && esInyeccion($cpu)) {
+    error(" Intento de inyección detectado en cpu");
 }
 
 // IP válida
@@ -155,7 +166,7 @@ if ($departamento === "") {
 // =============================
 // 🔥 UPDATE POR ID
 // =============================
-
+                //faltara poner en esta funcion los datos_sticker ya que de momento no se que datos se tiene en el//
 if (!empty($id)) {
 
     $sql_update = "UPDATE equipos SET
@@ -169,8 +180,12 @@ if (!empty($id)) {
         ram=?,
         disco_total=?,
         ip=?,
+        ubicacion=?,
+        departamento_manual=?,
+        observaciones=?,
         ultimo_inventario = NOW()";
 
+            //faltara poner en esta funcion los datos_sticker ya que de momento no se que datos se tiene en el//
     $params = [
         $codigo,
         $nombre_pc,
@@ -181,10 +196,13 @@ if (!empty($id)) {
         $cpu,
         $ram,
         $disco,
-        $ip
+        $ip,
+        $ubicacion,
+        $departamento_manual,
+        $observaciones
     ];
 
-    $types = "ssssssssss";
+    $types = "sssssssssssss";
 
     if (!empty($uuid)) {
         $sql_update .= ", uuid=?";
@@ -237,12 +255,12 @@ $resultado = $stmt->get_result();
 // =============================
 // 🔄 SI EXISTE → UPDATE
 // =============================
-
+        //faltara poner en esta funcion los datos_sticker ya que de momento no se que datos se tiene en el//
 if ($resultado->num_rows > 0) {
 
     $row = $resultado->fetch_assoc();
     $id = $row["id"];
-
+//
     $sql_update = "UPDATE equipos SET
         codigo_inventario=?,
         nombre_pc=?,
@@ -257,13 +275,16 @@ if ($resultado->num_rows > 0) {
         ip=?,
         uuid=?,
         serial=?,
+        ubicacion=?,
+        departamento_manual=?,
+        observaciones=?,
         ultimo_inventario = NOW()
         WHERE id=?";
 
     $stmt = $conn->prepare($sql_update);
 
     $stmt->bind_param(
-        "sssssssssssssi",
+        "ssssssssssssssssi",
         $codigo,
         $nombre_pc,
         $usuario,
@@ -277,6 +298,10 @@ if ($resultado->num_rows > 0) {
         $ip,
         $uuid,
         $serial,
+        $ubicacion,
+        $departamento_manual,
+       //datos_sticker,
+       $observaciones,
         $id
     );
 
@@ -296,16 +321,16 @@ if ($resultado->num_rows > 0) {
 // =============================
 
 else {
-
+            //faltara poner en esta funcion los datos_sticker ya que de momento no se que datos se tiene en el//
     $sql_insert = "INSERT INTO equipos
-    (codigo_inventario, nombre_pc, usuario, departamento, sistema_operativo, anydesk, cpu, ram, disco_total, discos, ip, uuid, serial, ultimo_inventario)
+    (codigo_inventario, nombre_pc, usuario, departamento, sistema_operativo, anydesk, cpu, ram, disco_total, discos, ip, uuid, serial, ubicacion, departamento_manual, observaciones, ultimo_inventario)
     VALUES
-    (?,?,?,?,?,?,?,?,?,?,?,?,?, NOW())";
+    (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, NOW())";
 
     $stmt = $conn->prepare($sql_insert);
 
     $stmt->bind_param(
-        "sssssssssssss",
+        "ssssssssssssssss",
         $codigo,
         $nombre_pc,
         $usuario,
@@ -318,7 +343,11 @@ else {
         $discos,
         $ip,
         $uuid,
-        $serial
+        $serial,
+        $ubicacion,
+        $departamento_manual,
+        //$datos_sticker,
+        $observaciones
     );
 
     if ($stmt->execute()) {

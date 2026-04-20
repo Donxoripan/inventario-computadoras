@@ -13,12 +13,12 @@ function procesarPerifericos($json)
     }
 
     $resultado = [];
-    $contador = 1; // 🔥 contador
+    $contador = 1; // 
 
     foreach ($lista as $p) {
 
         $resultado[] = [
-            "id_periferico" => $contador, // 👈 NUEVO
+            "id_periferico" => $contador, //
             "tipo" => $p["tipo"] ?? null,
             "marca" => $p["marca"] ?? null,
             "modelo" => $p["modelo"] ?? null,
@@ -28,7 +28,7 @@ function procesarPerifericos($json)
             "sn" => $p["sn"] ?? null
         ];
 
-        $contador++; // 🔥 incrementar
+        $contador++; // 
     }
 
     return $resultado;

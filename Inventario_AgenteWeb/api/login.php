@@ -17,7 +17,6 @@ if (empty($usuario) || empty($password)) {
     exit;
 }
 
-// 🔥 BUSCAR EN BD
 $sql = "SELECT * FROM usuarios WHERE usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $usuario);
